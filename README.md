@@ -9,4 +9,4 @@ alert period is ending.
 
  ![The UI](sample.png)
 
-Here is the live link https://shoredbird-pomodoro.herokuapp.com/
+Here is the live link https://shorebird-pomodoro.herokuapp.com/
