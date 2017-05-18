@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myPomodoroApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Free code camp project - Pomodoro Timer</title>
+    <link rel="stylesheet" href="lib/font-awesome.css">
+
+    <style>
+        @font-face {
+            font-family: 'digital-clock-font';
+            src: url('lib/digital-7.ttf');
+        }
+        body { background-color: lightcyan; }
+        #bkgnd { width: 100%; height: 100%; position: fixed; left: 0; top: 0; z-index: -1; }
+        .stretch { width: 100%; height: 100%; opacity: 0.4; }
+        .clock { z-index: 1; position: absolute; top: 25%; left: 35%;
+            font-family: 'digital-clock-font'; font-size: 1000%; color: blue; }
+        #dv-session { z-index: 1; position: absolute; bottom: 25%; left: 25%; color: coral; font-size: x-large; text-align: center; }
+        #dv-break { z-index: 1; position: absolute; bottom: 25%; right: 25%; color: darkgreen; font-size: x-large; text-align: center; }
+        #session-time { color: mediumvioletred; font-size: 250%; font-family: 'digital-clock-font' }
+        #break-time { color: green; font-size: 250%; font-family: 'digital-clock-font' }
+        .fa { cursor: pointer; }
+        .dv-start-stop { position: absolute; bottom: 30%; left:40%; z-index: 1; cursor: pointer; }
+        .dv-credit { position: absolute; bottom: 20px; right: 50px; font-size: small; z-index: 1; color: #44aaee; }
+    </style>
+</head>
+
+<body id="bkgnd" ng-controller="myPomodoroCtrl as CTRL">
+    <img src="image/bkgnd.jpg" class="stretch">
+
+    <!-- big digital clock -->
+    <div class="clock">{{CTRL.countDown}}</div>
+
+    <!-- a progress bar (optional) -->
+
+    <!-- 2 buttons for break time -->
+    <div id="dv-session">
+        <div>
+            Session Time<br/>
+            <div>
+                <span class="fa fa-plus-circle fa-2x" ng-click="CTRL.incSession()"></span>
+                <span id="session-time" style="margin: 0 5px 0 5px">{{CTRL.sessionTime}}</span>
+                <i class="fa fa-minus-circle fa-2x" ng-click="CTRL.decSession()"></i></div>
+            </div>
+    </div>
+
+    <!-- a big and obvious start/stop button (green/red) -->
+    <div class="dv-start-stop">
+        <img ng-src="image/{{CTRL.startStopFace}}.png" ng-click="CTRL.pauseResume()">
+    </div>
+
+    <!-- 2 buttons for session time -->
+    <div id="dv-break">
+        <div>
+            Break Time<br/>
+            <div>
+                <i class="fa fa-plus-circle fa-2x" ng-click="CTRL.incBreak()"></i>
+                <span id="break-time" style="margin: 0 5px 0 5px">{{CTRL.breakTime}}</span>
+                <i class="fa fa-minus-circle fa-2x" ng-click="CTRL.decBreak()"></i></div>
+        </div>
+    </div>
+
+    <!-- credits -->
+    <span class="dv-credit">Pomodoro timer (freecodecamp)</span>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.3/angular.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
+
+<!-- TODO reduce font size as viewport changes, add "pomodoro timer fcc small somewhere -->
